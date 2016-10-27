@@ -1,0 +1,26 @@
+/* install django */
+pip install django==1.7.4
+
+/* create project */
+django-admin startproject connectedin
+
+cd connectedin
+
+/* create database */
+python manage.py migrate
+
+/* create module */
+python manage.py startapp profiles
+
+/* start server */
+python manage.py runserver
+
+/* raw string - ignore escape codes */
+r'xxxx'
+
+/* regular expressions */
+
+^ - no inicio da string (começa com)
+$ - no fim da string (termina com)
+
+\d+ - um ou mais digitos numérico

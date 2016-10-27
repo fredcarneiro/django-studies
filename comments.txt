@@ -24,3 +24,28 @@ r'xxxx'
 $ - no fim da string (termina com)
 
 \d+ - um ou mais digitos numérico
+
+/* making schemas */
+python manage.py makemigrations
+
+/* apply schemas/modifications to the database*/
+python manage.py migrate
+
+/* using Django Shell*/
+python manage.py shell
+
+from profiles.models import Profile
+
+/* save */
+profile = Profile(name='Fred', email='carneiro@outlook.com', telephone='n\a', company_name='Carneiro')
+
+profile.save()
+
+/* search */
+found_profile = Profile.objects.get(id=1)
+
+/* update */
+found_profile.name = 'Fred Carneiro'
+found_profile.save()
+
+

@@ -5,10 +5,6 @@
 	<title>ConnectIn</title>
 </head>
 <body>
-	<h1>Detalhe Perfil</h1>
-	Name: {{ profile.name }}
-	Email: {{ profile.email }}
-	Telephone: {{ profile.telephone }}
-	Company: {{ profile.company_name }}
-</body>
+	<h1>Detalhe Perfil: {{ profile.name }}</h1>
+	<a href="{% url 'invite' profile.id %}">Invite</a>
 </html>

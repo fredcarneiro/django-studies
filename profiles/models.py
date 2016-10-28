@@ -13,5 +13,13 @@ class Profile(models.Model):
 	name = models.CharField(max_length=255, null=False)
 	email = models.CharField(max_length=255, null=False)
 	telephone = models.CharField(max_length=15, null=False)
-	company_name= models.CharField(max_length=255, null=False)		
+	company_name= models.CharField(max_length=255, null=False)
+
+	def invite(self, invited_profile):
+		invite = Invite(applicant=self, invited=invited_profile).save()
+
+class Invite(models.Model):
+
+	applicant = models.ForeignKey(Profile, related_name='made_invitations')
+	invited = models.ForeignKey(Profile, related_name='received_invitations')
 		

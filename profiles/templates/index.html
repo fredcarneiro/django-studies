@@ -11,7 +11,7 @@
 		<ul>
 			{% for profile in profiles %}
 				<li>
-					<a href="{% url 'show' profile.id %}">{{profile.name}} / {{profile.email}}</a>
+					<a href="{% url 'show' profile.id %}">{{profile.name|upper}} / {{profile.email}}</a>
 				</li>
 			{% endfor %}
 		</ul>

@@ -1,2 +1,2 @@
 # django-studies
-Welcome to the Django. ( Pum intended)
+Welcome to the Django. (Pum intended)

@@ -41,11 +41,33 @@ profile = Profile(name='Fred', email='carneiro@outlook.com', telephone='n\a', co
 
 profile.save()
 
+/* another save */
+profile = Profile.objects.create(name='Fred', email='carneiro@outlook.com', telephone='n\a', company_name='Carneiro')
+
+
 /* search */
 found_profile = Profile.objects.get(id=1)
+
+/* search with multiple fields*/
+p = Profile.objects.get(name='Steve', email='steve@minecraft.com')
+
+/* filtering */
+p = Profile.objects.filter(email__contains='s') /* email contains s */
+p = Profile.objects.filter(email__icontains='s') /* email contains s no matter if it is uppercase or lowercase */
+p = Profile.objects.filter(email__startswith='s') /* email starts with s */
 
 /* update */
 found_profile.name = 'Fred Carneiro'
 found_profile.save()
+
+/* delete */
+found_profile.delete()
+
+/* showing the DDL */
+python manage.py sqlmigrate profiles 0001_initial
+
+/* ROLLBACK */
+python manage.py sqlmigrate profiles 0001_initial --backwards
+
 
 

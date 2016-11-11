@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from profiles.models import Profile
 
 def index(request):
-	return render(request, 'index.html', {'profiles': Profile.objects.all()})
+	return render(request, 'index.html', {'profiles': Profile.objects.all(), "logged_profile": get_logged_profile(request)})
 
 def show(request, profile_id):
 	profile = Profile.objects.get(id=profile_id)

@@ -22,6 +22,32 @@
 
 		</div>
 	</div>
+	
+	<div class="panel panel-default">
+		
+		{% with total_de_convites as logged_profile.received_invitations.count %}
+		
+			{% if total_de_convites %}
+				<div class="panel-heading">
+					<strong>Você tem {{total_de_convites}} convite{{ total_de_convites |pluralize}} aguardando aprovação</strong>
+					<ul class="list-group">
+						{% for invite in logged_profile.received_invitations.all %}
+							<li class="list-group-item">
+								{{ invite.invited.name }}
+								<a href="#" class="pull-right">Aceitar</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			{% else %}
+				<div class="panel-body">
+					<p>Nenhum convite recebido :(</p>
+				</div>
+			{% endif %}
+		
+		{% endwith %}
+	</div>
+	
 </div>
 
 {% endblock%}

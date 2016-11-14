@@ -25,7 +25,7 @@
 	
 	<div class="panel panel-default">
 		
-		{% with total_de_convites as logged_profile.received_invitations.count %}
+		{% with total_de_convites=logged_profile.received_invitations.count %}
 		
 			{% if total_de_convites %}
 				<div class="panel-heading">
@@ -33,8 +33,8 @@
 					<ul class="list-group">
 						{% for invite in logged_profile.received_invitations.all %}
 							<li class="list-group-item">
-								{{ invite.invited.name }}
-								<a href="#" class="pull-right">Aceitar</a>
+								{{ invite.applicant.name }}
+								<a href="{% url 'accept_invitation' invite.id %}" class="pull-right">Aceitar</a>
 							</li>
 						{% endfor %}
 					</ul>
@@ -47,6 +47,30 @@
 		
 		{% endwith %}
 	</div>
+	
+	{% with total_de_contatos=logged_profile.contacts.count %}
+	
+		{% if total_de_contatos %}
+	
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Você tem {{total_de_contatos}} contato{{ total_de_contatos |pluralize}}</strong>
+					<ul class="list-group">
+						{% for contact in logged_profile.contacts.all %}
+							<li class="list-group-item"><a href="{% url 'show' contact.id %}">{{ contact.name }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		{% else %}
+		
+			<div class="panel-body">
+				<p>Nenhum contato :(</p>
+			</div>
+			
+		{% endif %}
+		
+	{% endwith %}
 	
 </div>
 

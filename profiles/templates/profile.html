@@ -14,7 +14,11 @@
 			<a href="mailto:{{ profile.email }}">{{profile.email}}</a>
 		</address>
 
-		<a href="{% url 'invite' profile.id %}">Invite!</a>
+		{% if not is_contact %}
+			<a href="{% url 'invite' profile.id %}">Invite!</a>
+		{% else %}
+			<div class="well well-sm">Vocês estão conectados</div>
+		{% endif %}
 	</div>
 </div>
 
